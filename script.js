@@ -12,26 +12,38 @@ let currentSongIndex = 0;
 
 function showCategory(category) {
     const playlist = document.getElementById("playlist");
-    playlist.innerHTML = "";
-    songs[category].forEach((song, index) => {
-        const li = document.createElement("li");
-        li.className = "song-item";
-        li.innerHTML = `
-    <span class="song-info">${song.title} - ${song.artist}</span>
-    <span class="song-duration">Loading...</span>
-`;
-        li.onclick = () => playSong(index);
+    playlist.innerHTML = '<div class="loading"><i class="fas fa-spinner"></i>Loading songs...</div>';
 
-        // Load duration
-        const tempAudio = new Audio(song.url);
-        tempAudio.addEventListener("loadedmetadata", () => {
-            const minutes = Math.floor(tempAudio.duration / 60);
-            const seconds = Math.floor(tempAudio.duration % 60).toString().padStart(2, "0");
-            li.querySelector(".song-duration").textContent = `${minutes}:${seconds}`;
+    setTimeout(() => {
+        playlist.innerHTML = "";
+        songs[category].forEach((song, index) => {
+            const li = document.createElement("li");
+            li.className = "song-item";
+            li.innerHTML = `
+                        <div class="song-info">
+                            <div class="song-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="song-details">
+                                <h3>${song.title}</h3>
+                                <p>${song.artist}</p>
+                            </div>
+                        </div>
+                        <div class="song-duration">
+                            <i class="fas fa-play" style="margin-right: 5px;"></i>
+                            Play
+                        </div>
+                    `;
+            li.onclick = () => playSong(index);
+            playlist.appendChild(li);
+
+            // Load duration (simplified for demo)
+            setTimeout(() => {
+                const durationSpan = li.querySelector(".song-duration");
+                durationSpan.innerHTML = `<i class="fas fa-clock" style="margin-right: 5px;"></i>3:${20 + index}`;
+            }, 500 + index * 100);
         });
-
-        playlist.appendChild(li);
-    });
+    }, 300);
 }
 
 // When user clicks a song

@@ -184,9 +184,17 @@ main {
 .song-duration {
     color: #888;
     font-size: 0.9rem;
-    padding: 5px 12px;
+    padding: 8px 16px;
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.song-duration:hover {
+    background: rgba(78, 205, 196, 0.2);
+    color: #4ecdc4;
+    transform: scale(1.05);
 }
 
 /* Audio Player */
@@ -196,14 +204,16 @@ main {
     left: 0;
     right: 0;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(45, 27, 105, 0.9));
-    padding: 25px;
+    backdrop-filter: blur(20px);
+    padding: 20px 25px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.5);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease;
     z-index: 9999;
+    transform: translateY(100%);
 }
 
 .audio-controls.show {
@@ -218,11 +228,11 @@ main {
     background: rgba(255, 255, 255, 0.1);
     border: none;
     color: #fff;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -238,9 +248,9 @@ main {
 }
 
 #playPauseButton {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
     background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
 }
 
@@ -248,15 +258,17 @@ main {
     flex: 1;
     text-align: center;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #fff;
-    margin: 0 20px;
+    margin: 0 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .audio-progress {
     flex: 2;
     height: 6px;
-    margin-right: 30px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 3px;
     cursor: pointer;
@@ -266,32 +278,29 @@ main {
 
 .audio-progress::-webkit-slider-thumb {
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
 }
 
 .player-right {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    width: 180px;
-    margin-right: 75px;
+    gap: 12px;
 }
 
 .volume-wrapper {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     color: #fff;
 }
 
 .volume-control {
-    width: 100px;
+    width: 80px;
     height: 4px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 2px;
@@ -302,41 +311,33 @@ main {
 
 .volume-control::-webkit-slider-thumb {
     appearance: none;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
     border-radius: 50%;
     cursor: pointer;
 }
 
-#volumeLabel {
-    font-size: 0.9rem;
-    min-width: 35px;
+.volume-label {
+    font-size: 0.85rem;
+    min-width: 32px;
+    color: #ccc;
 }
 
 .close-player {
-    position: absolute;
-    right: 15px;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    z-index: 10;
+    background: rgba(255, 255, 255, 0.1) !important;
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 1rem !important;
+    margin-left: 8px;
 }
 
 .close-player:hover {
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-    transform: scale(1.1);
-}
-
-.hidden {
-    display: none !important;
+    background: rgba(255, 107, 107, 0.8) !important;
 }
 
 /* Footer */
 footer {
-    position: relative;
     background: linear-gradient(135deg, rgba(17, 17, 17, 0.9) 0%, rgba(45, 27, 105, 0.7) 100%);
     text-align: center;
     padding: 30px 20px;
@@ -344,7 +345,6 @@ footer {
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: auto;
-    z-index: 1;
 }
 
 .footer-links {
@@ -370,92 +370,120 @@ footer {
     transform: translateY(-2px);
 }
 
+/* Default desktop layout */
+.control-buttons-row {
+    display: contents;
+    /* This makes the div transparent in flexbox */
+}
+
+.progress-row {
+    display: contents;
+    /* This makes the div transparent in flexbox */
+}
+
+/* Time Display */
+.time-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #ccc;
+    min-width: 80px;
+    justify-content: center;
+}
+
 /* Responsive Design */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     body {
         padding-bottom: 140px;
     }
 
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 30px 20px;
+        margin: 20px auto;
+    }
+
     .audio-controls {
-        flex-direction: column;
-        /* stack items vertically */
-        align-items: center;
-        padding: 10px 12px;
-        gap: 8px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: auto;
-        min-height: 120px;
-        /* adjust height for small screens */
-        box-shadow: 0 -3px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    #playPauseButton {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-    }
-
-    .audio-controls button {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+        padding: 15px 20px;
+        gap: 10px;
     }
 
     .song-title {
-        font-size: 0.95rem;
-        text-align: center;
-        margin: 4px 0;
-        flex: none;
-        width: 100%;
+        font-size: 0.9rem;
+        margin: 0 10px;
     }
 
     .audio-progress {
-        width: 90%;
-        height: 5px;
-        margin: 6px 0;
-    }
-
-    .volume-wrapper {
-        width: 90%;
-        justify-content: space-between;
-        gap: 5px;
-        flex-wrap: wrap;
+        flex: 1.5;
     }
 
     .volume-control {
-        width: 70%;
-        height: 4px;
+        width: 60px;
     }
 
-    #volumeLabel {
-        font-size: 0.8rem;
-    }
-
-    /* Close button */
-    .close-player {
-        position: absolute;
-        top: 8px;
-        right: 12px;
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-        background: transparent;
-        color: #bbb;
-    }
-
-    footer {
-        position: relative;
-        text-align: center;
-        padding: 30px 20px;
-        margin-top: auto;
-        margin-bottom: 130px;
-        z-index: 2;
+    .player-right {
+        gap: 8px;
     }
 }
 
-/* Smooth animations */
+@media (max-width: 480px) {
+    body {
+        padding-bottom: 160px;
+    }
+
+    .audio-controls {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        gap: 12px;
+        height: auto;
+    }
+
+    .song-title {
+        order: -1;
+        width: 100%;
+        margin: 0 0 8px 0;
+        font-size: 0.9rem;
+    }
+
+    .audio-progress {
+        order: 1;
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .player-right {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .close-player {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        margin: 0 !important;
+    }
+
+    #playPauseButton {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+
+    .audio-controls button {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Loading and animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -472,16 +500,18 @@ footer {
     animation: fadeInUp 0.5s ease forwards;
 }
 
-/* Loading state */
 .loading {
     text-align: center;
     padding: 40px;
     color: #888;
+    font-size: 1.1rem;
 }
 
 .loading i {
     font-size: 2rem;
     animation: spin 2s linear infinite;
+    display: block;
+    margin-bottom: 15px;
 }
 
 @keyframes spin {
@@ -491,5 +521,24 @@ footer {
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* Pulse animation for playing song */
+.song-item.playing .song-icon {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(78, 205, 196, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(78, 205, 196, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(78, 205, 196, 0);
     }
 }

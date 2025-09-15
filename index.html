@@ -32,28 +32,34 @@
 
     <!-- Audio Player -->
     <div class="audio-controls" id="audioControls">
-        <button onclick="previousSong()"><i class="fas fa-backward"></i></button>
-        <span class="song-title" id="songTitle">Select a song to play</span>
+        <button onclick="previousSong()"><i class="fas fa-step-backward"></i></button>
         <button onclick="togglePlayPause()" id="playPauseButton"><i class="fas fa-play"></i></button>
-        <button onclick="nextSong()"><i class="fas fa-forward"></i></button>
+        <button onclick="nextSong()"><i class="fas fa-step-forward"></i></button>
+
+        <span class="song-title" id="songTitle">Select a song to play</span>
 
         <input type="range" class="audio-progress" id="progressBar" min="0" max="100" value="0"
             oninput="seekAudio(event)">
 
-        <!-- Right side container -->
-        <div class="player-right">
-            <span>🔊</span>
-            <input type="range" class="volume-control" id="volumeControl" min="0" max="1" step="0.01" value="0.5"
-                oninput="setVolume(this.value)">
-            <span class="volume-label" id="volumeLabel">50%</span>
+        <div class="time-display">
+            <span id="currentTime">0:00</span>
+            <span>/</span>
+            <span id="totalTime">0:00</span>
+        </div>
 
-            <!-- Close Button -->
+        <div class="player-right">
+            <div class="volume-wrapper">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" class="volume-control" id="volumeControl" min="0" max="1" step="0.01" value="0.5"
+                    oninput="setVolume(this.value)">
+                <span class="volume-label" id="volumeLabel">50%</span>
+            </div>
             <button class="close-player" onclick="closePlayer()"><i class="fas fa-times"></i></button>
         </div>
     </div>
 
     <!-- Audio Source -->
-    <audio id="audioPlayer" ontimeupdate="updateProgressBar()" onended="nextSong()">
+    <audio id="audioPlayer" ontimeupdate="updateProgressBar()" onloadedmetadata="updateDuration()" onended="nextSong()">
         <source id="audioSource" src="" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
