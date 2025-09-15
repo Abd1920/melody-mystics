@@ -1,10 +1,10 @@
 const songs = {
     english: [
-        { title: "Unstoppable", artist: "Sia", url: "English Songs/Unstoppable-Sia.mp3" },
-        { title: "Havana (feat. Young Thug)", artist: "Camila Cabello", url: "English Songs/Havana-feat-Young-Thug-Camila-Cabello.mp3" },
-        { title: "Faded", artist: "Alan Walker", url: "English Songs/Faded-Alan-Walker.mp3" },
-        { title: "Birthday", artist: "Anne Marie", url: "English Songs/Birthday-Anne-Marie.mp3" },
-        { title: "Shape Of You", artist: "Ed Sheeran", url: "English Songs/Shape-of-You-Ed-Sheeran.mp3" }
+        { title: "Unstoppable", artist: "Sia", url: "english-songs/Unstoppable-Sia.mp3" },
+        { title: "Havana (feat. Young Thug)", artist: "Camila Cabello", url: "english-songs/Havana-feat-Young-Thug-Camila-Cabello.mp3" },
+        { title: "Faded", artist: "Alan Walker", url: "english-songs/Faded-Alan-Walker.mp3" },
+        { title: "Birthday", artist: "Anne Marie", url: "english-songs/Birthday-Anne-Marie.mp3" },
+        { title: "Shape Of You", artist: "Ed Sheeran", url: "english-songs/Shape-of-You-Ed-Sheeran.mp3" }
     ]
 };
 
