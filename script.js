@@ -1,10 +1,10 @@
 const songs = {
     english: [
-        { title: "Unstoppable", artist: "Sia", url: "https://www.dropbox.com/scl/fi/qglxhn1gqaxyz2bj1asfb/Unstoppable-Sia.mp3?rlkey=xtcs074o6jsbt7vlwphu39tsn&st=ytv4z64q&dl=1" },
-        { title: "Havana (feat. Young Thug)", artist: "Camila Cabello", url: "https://www.dropbox.com/scl/fi/z54uasb8hghcimq3xtwkx/Havana-feat-Young-Thug-Camila-Cabello.mp3?rlkey=g8kb691h7vxivpgvqljg409zw&st=m2bqyzc0&dl=1" },
-        { title: "Faded", artist: "Alan Walker", url: "https://www.dropbox.com/scl/fi/rb293ab10fajd3z6ggz3h/Faded-Alan-Walker.mp3?rlkey=z6ns4f6w052d2qbmwrpewf6zk&st=3sl050k6&dl=1" },
-        { title: "Birthday", artist: "Anne Marie", url: "https://www.dropbox.com/scl/fi/wqnzkk7iziai2xynbl091/Birthday-Anne-Marie.mp3?rlkey=p15e0kin4956du8ll8sw0y2ev&st=3atyw3q5&dl=1" },
-        { title: "Shape Of You", artist: "Ed Sheeran", url: "https://www.dropbox.com/scl/fi/x9blfwmlw4rbf83h01u27/Shape-of-You-Ed-Sheeran.mp3?rlkey=7znio763nu0wjb5my2pjjj4pw&st=57neioz5&dl=1" }
+        { title: "Unstoppable", artist: "Sia", url: "English Songs/Unstoppable-Sia.mp3" },
+        { title: "Havana (feat. Young Thug)", artist: "Camila Cabello", url: "English Songs/Havana-feat-Young-Thug-Camila-Cabello.mp3" },
+        { title: "Faded", artist: "Alan Walker", url: "English Songs/Faded-Alan-Walker.mp3" },
+        { title: "Birthday", artist: "Anne Marie", url: "English Songs/Birthday-Anne-Marie.mp3" },
+        { title: "Shape Of You", artist: "Ed Sheeran", url: "English Songs/Shape-of-You-Ed-Sheeran.mp3" }
     ]
 };
 
