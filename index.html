@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melody Mystics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Melody Mystics</h1>
+        <nav>
+            <a href="#" onclick="showCategory('english')">English Songs</a>
+        </nav>
+    </header>
+
+    <!-- Search + Playlist -->
+    <main>
+        <div class="container">
+            <input type="text" id="searchBar" class="search-bar" placeholder="🔍 Search for a song or artist..."
+                oninput="searchSongs()">
+            <ul class="song-list" id="playlist"></ul>
+        </div>
+    </main>
+
+    <!-- Audio Player -->
+    <div class="audio-controls" id="audioControls">
+        <button onclick="previousSong()"><i class="fas fa-backward"></i></button>
+        <span class="song-title" id="songTitle">Select a song to play</span>
+        <button onclick="togglePlayPause()" id="playPauseButton"><i class="fas fa-play"></i></button>
+        <button onclick="nextSong()"><i class="fas fa-forward"></i></button>
+
+        <input type="range" class="audio-progress" id="progressBar" min="0" max="100" value="0"
+            oninput="seekAudio(event)">
+
+        <!-- Right side container -->
+        <div class="player-right">
+            <span>🔊</span>
+            <input type="range" class="volume-control" id="volumeControl" min="0" max="1" step="0.01" value="0.5"
+                oninput="setVolume(this.value)">
+            <span class="volume-label" id="volumeLabel">50%</span>
+
+            <!-- Close Button -->
+            <button class="close-player" onclick="closePlayer()"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- Audio Source -->
+    <audio id="audioPlayer" ontimeupdate="updateProgressBar()" onended="nextSong()">
+        <source id="audioSource" src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Melody Mystics. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Privacy</a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
